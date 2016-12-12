@@ -18,7 +18,9 @@
     "start": "concurrently \"node server\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "go": "open http://localhost:8080; npm start",
+    "reset-data": "cp data.json.pristine data.json"
   },
   "proxy": "http://localhost:8081/"
 }
