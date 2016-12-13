@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
-window.client = (function () {
+const client = (function () {
   function getTimers(success) {
     return fetch('/api/timers', {
+      method: 'get',
       headers: {
         Accept: 'application/json',
       },
@@ -91,3 +92,5 @@ window.client = (function () {
     deleteTimer,
   };
 }());
+
+export default client;

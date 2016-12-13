@@ -1,4 +1,4 @@
-window.helpers = (function () {
+const helpers = (function () {
   function newTimer(attrs = {}) {
     const timer = {
       title: attrs.title || 'Timer',
@@ -54,3 +54,5 @@ window.helpers = (function () {
     renderElapsedString,
   };
 }());
+
+export default helpers;
