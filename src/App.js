@@ -29,6 +29,10 @@ class TimersDashboard extends React.Component {
     this.createTimer(timer);
   }
 
+  handleEditFormSubmit(attrs) {
+    this.updateTimer(attrs);
+  }
+
   createTimer(timer) {
     const t = helper.newTimer(timer);
     this.setState({
@@ -36,8 +40,19 @@ class TimersDashboard extends React.Component {
     });
   }
 
-  handleEditFormSubmit() {
-
+  updateTimer(attrs) {
+    this.setState({
+      timers: this.state.timers.map((timer) => {
+        if (timer.id === attrs.id) {
+          return Object.assign({}, timer, {
+            title: attrs.title,
+            project: attrs.project,
+          });
+        } else {
+          return timer;
+        }
+      })
+    });
   }
 
   render() {
@@ -46,6 +61,7 @@ class TimersDashboard extends React.Component {
         <div className='column'>
           <EditableTimerList
             timers={this.state.timers}
+            onFormSubmit={this.handleEditFormSubmit.bind(this)}
           />
           <ToggleableTimerForm
             onFormSubmit={this.handleCreateFormSubmit.bind(this)}
