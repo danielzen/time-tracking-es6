@@ -3,12 +3,22 @@ import helpers from './helper';
 
 class Timer extends React.Component {
 
+  componentDidMount() {
+    this.forceUpdateInterval = setInterval(() => this.forceUpdate(), 50);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.forceUpdateInterval);
+  }
+
   handleTrashClick() {
     this.props.onTrashClick(this.props.id);
   }
 
   render() {
-    const elapsedString = helpers.renderElapsedString(this.props.elapsed);
+    const elapsedString = helpers.renderElapsedString(
+      this.props.elapsed, this.props.runningSince
+    );
     return (
       <div className='ui centered card'>
         <div className='content'>
