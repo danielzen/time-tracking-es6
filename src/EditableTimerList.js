@@ -3,7 +3,7 @@ import EditableTimer from './EditableTimer';
 
 class EditableTimerList extends React.Component {
   render() {
-    // Inside EditableTimerList
+    // Inside EditableTimerList.render()
     const timers = this.props.timers.map((timer) => (
       <EditableTimer
         key={timer.id}
@@ -13,9 +13,10 @@ class EditableTimerList extends React.Component {
         elapsed={timer.elapsed}
         runningSince={timer.runningSince}
         onFormSubmit={this.props.onFormSubmit}
+        onTrashClick={this.props.onTrashClick}
       />
     ));
-    // ...
+
     return (
       <div id='timers'>
         {timers}
