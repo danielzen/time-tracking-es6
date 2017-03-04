@@ -3,6 +3,7 @@ import uuid from 'uuid';
 
 import EditableTimerList from './EditableTimerList';
 import ToggleableTimerForm from './ToggleableTimerForm';
+import helpers from './helper';
 
 class TimersDashboard extends React.Component {
   state = {
@@ -24,6 +25,18 @@ class TimersDashboard extends React.Component {
     ],
   };
 
+  // Inside TimersDashboard
+  handleCreateFormSubmit = (timer) => {
+    this.createTimer(timer);
+  };
+
+  createTimer = (timer) => {
+    const t = helpers.newTimer(timer);
+    this.setState({
+      timers: this.state.timers.concat(t),
+    });
+  };
+
   render() {
     return (
       <div className='ui three column centered grid'>
@@ -31,7 +44,9 @@ class TimersDashboard extends React.Component {
           <EditableTimerList
             timers={this.state.timers}
           />
-          <ToggleableTimerForm />
+          <ToggleableTimerForm
+            onFormSubmit={this.handleCreateFormSubmit}
+          />
         </div>
       </div>
     );

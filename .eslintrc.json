@@ -28,7 +28,7 @@
   "rules": {
     "no-console": "warn",
     "strict": 0,
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
     "indent": [
       "error",
       2
