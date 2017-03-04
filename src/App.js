@@ -60,7 +60,6 @@ class TimersDashboard extends React.Component {
     });
   };
 
-  // Inside TimersDashboard
   deleteTimer = (timerId) => {
     this.setState({
       timers: this.state.timers.filter(t => t.id !== timerId),
@@ -71,7 +70,6 @@ class TimersDashboard extends React.Component {
     return (
       <div className='ui three column centered grid'>
         <div className='column'>
-          {/* Inside TimersDashboard.render() */}
           <EditableTimerList
             timers={this.state.timers}
             onFormSubmit={this.handleEditFormSubmit}
