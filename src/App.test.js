@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './TimersDashboard';
+import App from './App-complete';
 
 // Sanity Test
 it('renders without crashing', () => {
