@@ -16,3 +16,4 @@ npm-debug.log
 
 # JetBrains
 .idea
+/data.json

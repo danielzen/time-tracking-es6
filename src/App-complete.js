@@ -1,6 +1,6 @@
 import React from 'react';
 import client from './client';
-import './helper';
+import helpers from './helper';
 
 /* eslint-disable react/prefer-stateless-function */
 /* eslint-disable no-undef */
