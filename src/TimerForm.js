@@ -1,14 +1,26 @@
 import React from 'react';
 
 class TimerForm extends React.Component {
+  state = {
+    title: this.props.title || '',
+    project: this.props.project || '',
+  };
 
-  handleSubmit() {
+  handleTitleChange = (e) => {
+    this.setState({ title: e.target.value });
+  };
+
+  handleProjectChange = (e) => {
+    this.setState({ project: e.target.value });
+  };
+
+  handleSubmit = () => {
     this.props.onFormSubmit({
       id: this.props.id,
-      title: this.refs.title.value,
-      project: this.refs.project.value,
+      title: this.state.title,
+      project: this.state.project,
     });
-  }
+  };
 
   render() {
     const submitText = this.props.id ? 'Update' : 'Create';
@@ -18,23 +30,30 @@ class TimerForm extends React.Component {
           <div className='ui form'>
             <div className='field'>
               <label>Title</label>
-              <input type='text' ref='title'
-                     defaultValue={this.props.title}/></div>
+              <input
+                type='text'
+                value={this.state.title}
+                onChange={this.handleTitleChange}
+              />
+            </div>
             <div className='field'>
               <label>Project</label>
-              <input type='text' ref='project'
-                     defaultValue={this.props.project}/>
+              <input
+                type='text'
+                value={this.state.project}
+                onChange={this.handleProjectChange}
+              />
             </div>
             <div className='ui two bottom attached buttons'>
               <button
                 className='ui basic blue button'
-                onClick={this.handleSubmit.bind(this)}
+                onClick={this.handleSubmit}
               >
                 {submitText}
               </button>
               <button
                 className='ui basic red button'
-                onClick={this.props.onFormClose.bind(this)}
+                onClick={this.props.onFormClose}
               >
                 Cancel
               </button>

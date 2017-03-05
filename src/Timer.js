@@ -3,29 +3,25 @@ import helpers from './helper';
 import TimerActionButton from './TimerActionButton';
 
 class Timer extends React.Component {
-
   componentDidMount() {
-    this.forceUpdateInterval =
-      setInterval(() => this.forceUpdate(), 50 /*ms*/);
+    this.forceUpdateInterval = setInterval(() => this.forceUpdate(), 50);
   }
 
   componentWillUnmount() {
     clearInterval(this.forceUpdateInterval);
   }
 
-  handleStartClick() {
-    console.log('HandleStartClick');
+  handleStartClick = () => {
     this.props.onStartClick(this.props.id);
-  }
+  };
 
-  handleStopClick() {
-    console.log('HandleStopClick');
+  handleStopClick = () => {
     this.props.onStopClick(this.props.id);
-  }
+  };
 
-  handleTrashClick() {
+  handleTrashClick = () => {
     this.props.onTrashClick(this.props.id);
-  }
+  };
 
   render() {
     const elapsedString = helpers.renderElapsedString(
@@ -39,34 +35,36 @@ class Timer extends React.Component {
           </div>
           <div className='meta'>
             {this.props.project}
-            </div>
+          </div>
           <div className='center aligned description'>
             <h2>
               {elapsedString}
-            </h2></div>
+            </h2>
+          </div>
           <div className='extra content'>
             <span
               className='right floated edit icon'
               onClick={this.props.onEditClick}
             >
-              <i className='edit icon'></i>
+              <i className='edit icon' />
             </span>
             <span
               className='right floated trash icon'
-              onClick={this.handleTrashClick.bind(this)}
+              onClick={this.handleTrashClick}
             >
-              <i className='trash icon'></i>
+              <i className='trash icon' />
             </span>
           </div>
         </div>
         <TimerActionButton
           timerIsRunning={!!this.props.runningSince}
-          onStartClick={this.handleStartClick.bind(this)}
-          onStopClick={this.handleStopClick.bind(this)}
+          onStartClick={this.handleStartClick}
+          onStopClick={this.handleStopClick}
         />
       </div>
     );
   }
 }
+
 
 export default Timer;

@@ -2,30 +2,29 @@ import React from 'react';
 import TimerForm from './TimerForm';
 
 class ToggleableTimerForm extends React.Component {
-
   state = {
-    isOpen: false
+    isOpen: false,
   };
 
-  handleFormOpen() {
+  handleFormOpen = () => {
     this.setState({ isOpen: true });
-  }
+  };
 
-  handleFormClose() {
+  handleFormClose = () => {
     this.setState({ isOpen: false });
-  }
+  };
 
-  handleFormSubmit(timer) {
+  handleFormSubmit = (timer) => {
     this.props.onFormSubmit(timer);
     this.setState({ isOpen: false });
-  }
+  };
 
   render() {
     if (this.state.isOpen) {
       return (
         <TimerForm
-          onFormSubmit={this.handleFormSubmit.bind(this)}
-          onFormClose={this.handleFormClose.bind(this)}
+          onFormSubmit={this.handleFormSubmit}
+          onFormClose={this.handleFormClose}
         />
       );
     } else {
@@ -33,11 +32,12 @@ class ToggleableTimerForm extends React.Component {
         <div className='ui basic content center aligned segment'>
           <button
             className='ui basic button icon'
-            onClick={this.handleFormOpen.bind(this)}
+            onClick={this.handleFormOpen}
           >
-            <i className='plus icon'></i>
+            <i className='plus icon' />
           </button>
-        </div> );
+        </div>
+      );
     }
   }
 }
