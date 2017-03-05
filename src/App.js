@@ -71,6 +71,8 @@ class TimersDashboard extends React.Component {
     });
   };
 
+  // Inside TimersDashboard
+  // ...
   startTimer = (timerId) => {
     const now = Date.now();
 
@@ -85,6 +87,10 @@ class TimersDashboard extends React.Component {
         }
       }),
     });
+
+    client.startTimer(
+      { id: timerId, start: now }
+    );
   };
 
   stopTimer = (timerId) => {
